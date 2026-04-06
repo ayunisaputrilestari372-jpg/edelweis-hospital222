@@ -116,7 +116,7 @@ function App() {
                 style={styles.map}
                 loading="lazy"
               ></iframe>
-            </div>
+            </div> 
 
             {/* form */}
             <div style={{ marginTop: "25px" }}>
