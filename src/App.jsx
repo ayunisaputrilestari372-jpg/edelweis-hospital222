@@ -38,41 +38,42 @@ function App() {
               Memberikan pelayanan terbaik dengan kepedulian, kenyamanan,
               dan keamanan bagi setiap pasien.
             </p>
-            <p>
-             visi misi
-            </p>
           </div>
         )}
+{menu === "layanan" && (
+  <div style={styles.card}>
+    <h2 style={styles.title}> Layanan Kami</h2>
+    <div style={styles.section}>
+      <h3> Pusat Unggulan</h3>
+      <ul style={styles.list}>
+        <li><b>Brain Center & Neurosurgery</b> - CT-Scan & operasi saraf</li>
+        <li><b>Mother and Children Center</b> - Anak & kandungan</li>
+        <li><b>Pain Center</b> - Penanganan nyeri</li>
+        <li><b>Wellness & Aesthetic</b> - Perawatan tubuh</li>
+        <li><b>Golden Senior Care</b> - Lansia</li>
+        <li><b>Stem Cell Therapy</b> - Regenerasi jaringan</li>
+      </ul>
+    </div>
 
-        {menu === "layanan" && (
-          <div style={styles.card}>
-            <h2>Layanan Kami</h2>
+    <div style={styles.section}>
+      <h3> Layanan Medis Umum</h3>
+      <ul style={styles.list}>
+        <li> IGD 24 Jam & Poli Rawat Jalan</li>
+        <li> Hemodialisis & CAPD</li>
+        <li> Radiologi, Lab & Rehabilitasi</li>
+      </ul>
+    </div>
 
-            <h3>Pusat Unggulan (Center of Excellence)</h3>
-            <ul style={styles.list}>
-              <li><b>Brain Center & Neurosurgery</b>: CT-Scan, operasi saraf, Endoscopic Spine Laminectomy</li>
-              <li><b>Mother and Children Center</b>: Spesialis anak, kandungan, tumbuh kembang, laktasi, laparoskopi ginekologi</li>
-              <li><b>Pain Center</b>: Penanganan nyeri akut dan kronis</li>
-              <li><b>Wellness & Aesthetic Center</b>: Perawatan kulit dan tubuh holistik</li>
-              <li><b>Golden Senior Care</b>: Layanan kesehatan lansia</li>
-              <li><b>Stem Cell & Regenerative Therapy</b>: Regenerasi jaringan untuk penyakit kronis</li>
-            </ul>
-
-            <h3>Layanan Medis Umum & Penunjang</h3>
-            <ul style={styles.list}>
-              <li>IGD 24 Jam & Poli Rawat Jalan (Senin–Sabtu 08.00–20.00 WIB)</li>
-              <li>Hemodialisis & CAPD</li>
-              <li>Radiologi, Laboratorium, dan Rehabilitasi Medis</li>
-            </ul>
-
-            <h3>Paket Layanan</h3>
-            <ul style={styles.list}>
-              <li>Paket Medical Check Up (MCU)</li>
-              <li>Paket Persalinan (SC, Normal, ILA)</li>
-              <li>Paket Khitan Anak</li>
-            </ul>
-          </div>
-        )}
+    <div style={styles.section}>
+      <h3> Paket Layanan</h3>
+      <ul style={styles.list}>
+        <li> Medical Check Up (MCU)</li>
+        <li> Paket Persalinan</li>
+        <li> Paket Khitan Anak</li>
+      </ul>
+    </div>
+  </div>
+)}
 
         {menu === "kontak" && (
           <div style={styles.card}>
@@ -128,15 +129,15 @@ const styles = {
     padding: "30px",
     flex: 1
   },
-  card: {
-    background: "white",
-    padding: "20px",
-    borderRadius: "12px",
-    boxShadow: "0 4px 10px rgba(0,0,0,0.1)",
-    maxWidth: "600px",
-    margin: "0 auto",
-    textAlign: "center"
-  },
+ card: {
+  background: "#e0f2fe", // biru muda
+  padding: "20px",
+  borderRadius: "12px",
+  boxShadow: "0 4px 10px rgba(0,0,0,0.1)",
+  maxWidth: "600px",
+  margin: "0 auto",
+  textAlign: "center"
+},
   image: {
     width: "100%",
     height: "260px",
