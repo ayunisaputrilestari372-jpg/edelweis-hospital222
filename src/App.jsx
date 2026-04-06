@@ -3,24 +3,6 @@ import gedung from "./assets/gedung.webp";
 
 function App() {
   const [menu, setMenu] = useState("home");
-  const [form, setForm] = useState({
-    nama: "",
-    email: "",
-    pesan: ""
-  });
-
-  const handleChange = (e) => {
-    setForm({
-      ...form,
-      [e.target.name]: e.target.value
-    });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    alert("Pesan berhasil dikirim!");
-    setForm({ nama: "", email: "", pesan: "" });
-  };
 
   return (
     <div style={styles.container}>
@@ -38,14 +20,12 @@ function App() {
         >
           Home
         </button>
-
         <button
           onClick={() => setMenu("layanan")}
           style={menu === "layanan" ? styles.activeBtn : styles.btn}
         >
           Layanan
         </button>
-
         <button
           onClick={() => setMenu("kontak")}
           style={menu === "kontak" ? styles.activeBtn : styles.btn}
@@ -55,115 +35,117 @@ function App() {
       </nav>
 
       <div style={styles.content}>
+        {/* HOME */}
         {menu === "home" && (
           <div style={styles.card}>
             <img src={gedung} alt="Rumah Sakit" style={styles.image} />
-            <h2>Selamat Datang di Edelweis Hospital 👋</h2>
-            <p>
-              Kami hadir sebagai mitra kesehatan terpercaya dengan layanan medis modern,
-              fasilitas lengkap, dan tenaga profesional berpengalaman.
-            </p>
-          </div>
-        )}
 
-        {menu === "layanan" && (
-          <div style={styles.card}>
-            <h2>Layanan Kami</h2>
-            <ul style={styles.list}>
-              <li>IGD 24 Jam</li>
-              <li>Poli Umum & Spesialis</li>
-              <li>Laboratorium & Radiologi</li>
-              <li>Medical Check Up</li>
-            </ul>
-          </div>
-        )}
-
-        {menu === "kontak" && (
-          <div style={styles.card}>
-            <h2>Hubungi Kami</h2>
-
-            <p style={{ fontSize: "14px", color: "#555" }}>
-              Silakan hubungi kami melalui kontak di bawah atau kirim pesan langsung.
-            </p>
-
-            <p>📍 Jl. Soekarno Hatta No. 550, Bandung</p>
-
-            {/* tombol kontak */}
-            <div style={styles.contactGrid}>
-              <a href="tel:+622286023000" style={styles.contactBtn}>
-                📞 Telepon
-              </a>
-
-              <a href="mailto:info@edelweiss.id" style={styles.contactBtn}>
-                ✉️ Email
-              </a>
-
-              <a
-                href="https://wa.me/6281998090154"
-                target="_blank"
-                rel="noopener noreferrer"
-                style={styles.waBtn}
-              >
-                💬 WhatsApp
-              </a>
+            <div style={{ textAlign: "center", marginBottom: "20px" }}>
+              <h2>Selamat Datang di Edelweis Hospital 👋</h2>
+              <p>
+                Edelweis Hospital hadir sebagai rumah sakit modern yang
+                berkomitmen memberikan pelayanan kesehatan terbaik kepada
+                masyarakat. Dengan didukung oleh tenaga medis profesional,
+                fasilitas lengkap, serta teknologi terkini.
+              </p>
             </div>
 
-            {/* map */}
-            <div style={styles.mapContainer}>
-              <iframe
-                title="Lokasi Edelweis Hospital"
-                src="https://www.google.com/maps?q=Edelweiss+Hospital+Bandung&output=embed"
-                style={styles.map}
-                loading="lazy"
-              ></iframe>
-            </div> 
+            <div style={styles.grid2}>
+              <div style={styles.box}>
+                <h3>Misi</h3>
+                <ul style={styles.list}>
+                  <li>
+                    Memberikan pelayanan terbaik dengan penuh kasih sayang dan
+                    profesional
+                  </li>
+                  <li>
+                    Menjadi tenaga kesehatan yang unggul dan berorientasi
+                    pasien
+                  </li>
+                  <li>
+                    Layanan berbasis riset, data, dan teknologi modern
+                  </li>
+                </ul>
+              </div>
 
-            {/* form */}
-            <div style={{ marginTop: "25px" }}>
-              <h3>Kirim Pesan</h3>
+              <div style={styles.box}>
+                <h3>Visi</h3>
+                <p>
+                  Menjadi rumah sakit pilihan utama dengan pelayanan
+                  kesehatan terintegrasi dan berkualitas tinggi.
+                </p>
+              </div>
+            </div>
+          </div>
+        )}
 
-              <form onSubmit={handleSubmit} style={styles.form}>
-                <input
-                  type="text"
-                  name="nama"
-                  placeholder="Nama"
-                  value={form.nama}
-                  onChange={handleChange}
-                  required
-                  style={styles.input}
-                />
+        {/* LAYANAN */}
+        {menu === "layanan" && (
+          <div style={styles.card}>
+            <h2 style={styles.title}>Layanan Kami</h2>
 
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="Email"
-                  value={form.email}
-                  onChange={handleChange}
-                  required
-                  style={styles.input}
-                />
+            <div style={styles.section}>
+              <h3>Pusat Unggulan</h3>
+              <ul style={styles.list}>
+                <li>Brain Center & Neurosurgery</li>
+                <li>Mother and Children Center</li>
+                <li>Pain Center</li>
+                <li>Wellness & Aesthetic</li>
+                <li>Golden Senior Care</li>
+                <li>Stem Cell Therapy</li>
+              </ul>
+            </div>
 
-                <textarea
-                  name="pesan"
-                  placeholder="Pesan"
-                  value={form.pesan}
-                  onChange={handleChange}
-                  required
-                  style={styles.textarea}
-                />
+            <div style={styles.section}>
+              <h3>Layanan Medis Umum</h3>
+              <ul style={styles.list}>
+                <li>IGD 24 Jam & Poli Rawat Jalan</li>
+                <li>Hemodialisis & CAPD</li>
+                <li>Radiologi, Lab & Rehabilitasi</li>
+              </ul>
+            </div>
 
-                <button type="submit" style={styles.submitBtn}>
-                  Kirim Pesan
-                </button>
-              </form>
+            <div style={styles.section}>
+              <h3>Paket Layanan</h3>
+              <ul style={styles.list}>
+                <li>Medical Check Up</li>
+                <li>Paket Persalinan</li>
+                <li>Paket Khitan Anak</li>
+              </ul>
+            </div>
+          </div>
+        )}
+
+        {/* KONTAK (SUDAH DIUPDATE) */}
+        {menu === "kontak" && (
+          <div style={styles.card}>
+            <h2 style={styles.title}>Kontak Kami</h2>
+
+            <div style={styles.section}>
+              <p>📍 <b>Alamat:</b> Jl. Soekarno Hatta No. 550, Bandung</p>
+              <p>📞 <b>Telepon:</b> (022) 860 23 000</p>
+              <p>📱 <b>WhatsApp:</b> 0812-3456-7890</p>
+              <p>✉️ <b>Email:</b> info@edelweiss.id</p>
+            </div>
+
+            <div style={styles.section}>
+              <h3>Jam Operasional</h3>
+              <p>🕐 IGD: 24 Jam</p>
+              <p>🕘 Poli: 08.00 - 20.00 WIB</p>
+            </div>
+
+            <div style={styles.section}>
+              <h3>Informasi</h3>
+              <p>
+                Kami siap melayani Anda dengan tenaga medis profesional dan
+                fasilitas lengkap setiap hari.
+              </p>
             </div>
           </div>
         )}
       </div>
 
-      <footer style={styles.footer}>
-        © 2026 Edelweis Hospital
-      </footer>
+      <footer style={styles.footer}>© 2026 Edelweis Hospital</footer>
     </div>
   );
 }
@@ -174,121 +156,79 @@ const styles = {
     background: "#f4f6f9",
     minHeight: "100vh",
     display: "flex",
-    flexDirection: "column"
+    flexDirection: "column",
   },
   header: {
     background: "#2563eb",
     color: "white",
     padding: "20px",
-    textAlign: "center"
+    textAlign: "center",
   },
   nav: {
     display: "flex",
     justifyContent: "center",
-    background: "#1d4ed8"
+    background: "#1d4ed8",
   },
   btn: {
-    padding: "12px",
+    padding: "12px 20px",
     border: "none",
     background: "transparent",
     color: "white",
-    cursor: "pointer"
+    cursor: "pointer",
   },
   activeBtn: {
-    padding: "12px",
+    padding: "12px 20px",
     border: "none",
     background: "#1e40af",
     color: "white",
-    cursor: "pointer"
+    cursor: "pointer",
   },
   content: {
     padding: "30px",
-    flex: 1
+    flex: 1,
   },
   card: {
-    background: "white",
+    background: "#e0f2fe",
     padding: "20px",
     borderRadius: "12px",
     boxShadow: "0 4px 10px rgba(0,0,0,0.1)",
     maxWidth: "700px",
     margin: "0 auto",
-    textAlign: "center"
+    textAlign: "center",
   },
   image: {
     width: "100%",
-    height: "260px",
-    objectFit: "cover",
-    borderRadius: "12px"
+    height: "320px",
+    objectFit: "contain",
+    borderRadius: "12px",
+    marginBottom: "20px",
   },
   list: {
-    textAlign: "left"
-  },
-  contactGrid: {
-    display: "grid",
-    gridTemplateColumns: "1fr 1fr",
-    gap: "10px",
-    marginTop: "15px"
-  },
-  contactBtn: {
-    textDecoration: "none",
-    padding: "12px",
-    background: "#2563eb",
-    color: "white",
-    borderRadius: "8px",
-    fontWeight: "bold",
-    textAlign: "center"
-  },
-  waBtn: {
-    textDecoration: "none",
-    padding: "12px",
-    background: "#25D366",
-    color: "white",
-    borderRadius: "8px",
-    fontWeight: "bold",
-    textAlign: "center"
-  },
-  mapContainer: {
-    marginTop: "25px",
-    borderRadius: "12px",
-    overflow: "hidden",
-    boxShadow: "0 4px 10px rgba(0,0,0,0.1)"
-  },
-  map: {
-    width: "100%",
-    height: "250px",
-    border: "0"
-  },
-  form: {
-    display: "flex",
-    flexDirection: "column",
-    gap: "10px"
-  },
-  input: {
-    padding: "10px",
-    borderRadius: "6px",
-    border: "1px solid #ccc"
-  },
-  textarea: {
-    padding: "10px",
-    borderRadius: "6px",
-    border: "1px solid #ccc",
-    minHeight: "100px"
-  },
-  submitBtn: {
-    padding: "12px",
-    background: "#2563eb",
-    color: "white",
-    border: "none",
-    borderRadius: "8px",
-    cursor: "pointer",
-    fontWeight: "bold"
+    textAlign: "left",
+    paddingLeft: "20px",
   },
   footer: {
     background: "#2563eb",
     color: "white",
     textAlign: "center",
-    padding: "15px"
-  }
+    padding: "15px",
+  },
+  grid2: {
+    display: "grid",
+    gridTemplateColumns: "1fr 1fr",
+    gap: "20px",
+  },
+  box: {
+    borderLeft: "3px solid #0ea5e9",
+    paddingLeft: "15px",
+  },
+  title: {
+    marginBottom: "10px",
+  },
+  section: {
+    textAlign: "left",
+    marginTop: "15px",
+  },
 };
 
 export default App;
