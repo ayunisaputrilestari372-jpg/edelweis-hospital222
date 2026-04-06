@@ -3,6 +3,24 @@ import gedung from "./assets/gedung.webp";
 
 function App() {
   const [menu, setMenu] = useState("home");
+  const [form, setForm] = useState({
+    nama: "",
+    email: "",
+    pesan: ""
+  });
+
+  const handleChange = (e) => {
+    setForm({
+      ...form,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    alert("Pesan berhasil dikirim!");
+    setForm({ nama: "", email: "", pesan: "" });
+  };
 
   return (
     <div style={styles.container}>
@@ -34,52 +52,96 @@ function App() {
               Kami hadir sebagai mitra kesehatan terpercaya dengan layanan medis modern,
               fasilitas lengkap, dan tenaga profesional berpengalaman.
             </p>
-            <p>
-              Memberikan pelayanan terbaik dengan kepedulian, kenyamanan,
-              dan keamanan bagi setiap pasien.
-            </p>
-            <p>
-             visi misi
-            </p>
           </div>
         )}
 
         {menu === "layanan" && (
           <div style={styles.card}>
             <h2>Layanan Kami</h2>
-
-            <h3>Pusat Unggulan (Center of Excellence)</h3>
             <ul style={styles.list}>
-              <li><b>Brain Center & Neurosurgery</b>: CT-Scan, operasi saraf, Endoscopic Spine Laminectomy</li>
-              <li><b>Mother and Children Center</b>: Spesialis anak, kandungan, tumbuh kembang, laktasi, laparoskopi ginekologi</li>
-              <li><b>Pain Center</b>: Penanganan nyeri akut dan kronis</li>
-              <li><b>Wellness & Aesthetic Center</b>: Perawatan kulit dan tubuh holistik</li>
-              <li><b>Golden Senior Care</b>: Layanan kesehatan lansia</li>
-              <li><b>Stem Cell & Regenerative Therapy</b>: Regenerasi jaringan untuk penyakit kronis</li>
-            </ul>
-
-            <h3>Layanan Medis Umum & Penunjang</h3>
-            <ul style={styles.list}>
-              <li>IGD 24 Jam & Poli Rawat Jalan (Senin–Sabtu 08.00–20.00 WIB)</li>
-              <li>Hemodialisis & CAPD</li>
-              <li>Radiologi, Laboratorium, dan Rehabilitasi Medis</li>
-            </ul>
-
-            <h3>Paket Layanan</h3>
-            <ul style={styles.list}>
-              <li>Paket Medical Check Up (MCU)</li>
-              <li>Paket Persalinan (SC, Normal, ILA)</li>
-              <li>Paket Khitan Anak</li>
+              <li>IGD 24 Jam</li>
+              <li>Poli Umum & Spesialis</li>
+              <li>Laboratorium & Radiologi</li>
+              <li>Medical Check Up</li>
             </ul>
           </div>
         )}
 
         {menu === "kontak" && (
           <div style={styles.card}>
-            <h2>Kontak</h2>
+            <h2>Hubungi Kami</h2>
+
             <p>📍 Jl. Soekarno Hatta No. 550, Bandung</p>
-            <p>📞 (022) 860 23 000</p>
-            <p>✉️ info@edelweiss.id</p>
+
+            {/* Tombol Kontak */}
+            <div style={styles.contactBox}>
+              <a href="tel:+6281998090154" style={styles.contactBtn}>
+                📞 Telepon
+              </a>
+
+              <a href="mailto:info@edelweiss.id" style={styles.contactBtn}>
+                ✉️ Email
+              </a>
+
+              <a
+                href="https://wa.me/6281998090154"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={styles.waBtn}
+              >
+                💬 WhatsApp
+              </a>
+            </div>
+
+            {}
+            <div style={{ marginTop: "25px" }}>
+              <iframe
+                title="maps"
+                src="https://www.google.com/maps?q=Edelweiss+Hospital+Bandung&output=embed"
+                style={styles.map}
+                allowFullScreen=""
+                loading="lazy"
+              ></iframe>
+            </div>
+
+            {}
+            <div style={{ marginTop: "25px" }}>
+              <h3>Kirim Pesan</h3>
+              <form onSubmit={handleSubmit} style={styles.form}>
+                <input
+                  type="text"
+                  name="nama"
+                  placeholder="Nama"
+                  value={form.nama}
+                  onChange={handleChange}
+                  required
+                  style={styles.input}
+                />
+
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Email"
+                  value={form.email}
+                  onChange={handleChange}
+                  required
+                  style={styles.input}
+                />
+
+                <textarea
+                  name="pesan"
+                  placeholder="Pesan"
+                  value={form.pesan}
+                  onChange={handleChange}
+                  required
+                  style={styles.textarea}
+                />
+
+                <button type="submit" style={styles.submitBtn}>
+                  Kirim Pesan
+                </button>
+              </form>
+            </div>
           </div>
         )}
       </div>
@@ -111,14 +173,14 @@ const styles = {
     background: "#1d4ed8"
   },
   btn: {
-    padding: "12px 20px",
+    padding: "12px",
     border: "none",
     background: "transparent",
     color: "white",
     cursor: "pointer"
   },
   activeBtn: {
-    padding: "12px 20px",
+    padding: "12px",
     border: "none",
     background: "#1e40af",
     color: "white",
@@ -133,7 +195,7 @@ const styles = {
     padding: "20px",
     borderRadius: "12px",
     boxShadow: "0 4px 10px rgba(0,0,0,0.1)",
-    maxWidth: "600px",
+    maxWidth: "700px",
     margin: "0 auto",
     textAlign: "center"
   },
@@ -141,12 +203,60 @@ const styles = {
     width: "100%",
     height: "260px",
     objectFit: "cover",
-    borderRadius: "12px",
-    marginBottom: "20px"
+    borderRadius: "12px"
   },
   list: {
-    textAlign: "left",
-    paddingLeft: "20px"
+    textAlign: "left"
+  },
+  contactBox: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "10px",
+    marginTop: "15px"
+  },
+  contactBtn: {
+    textDecoration: "none",
+    padding: "12px",
+    background: "#2563eb",
+    color: "white",
+    borderRadius: "8px"
+  },
+  waBtn: {
+    textDecoration: "none",
+    padding: "12px",
+    background: "#25D366",
+    color: "white",
+    borderRadius: "8px"
+  },
+  map: {
+    width: "100%",
+    height: "250px",
+    border: "0",
+    borderRadius: "10px"
+  },
+  form: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "10px"
+  },
+  input: {
+    padding: "10px",
+    borderRadius: "6px",
+    border: "1px solid #ccc"
+  },
+  textarea: {
+    padding: "10px",
+    borderRadius: "6px",
+    border: "1px solid #ccc",
+    minHeight: "100px"
+  },
+  submitBtn: {
+    padding: "12px",
+    background: "#2563eb",
+    color: "white",
+    border: "none",
+    borderRadius: "8px",
+    cursor: "pointer"
   },
   footer: {
     background: "#2563eb",
