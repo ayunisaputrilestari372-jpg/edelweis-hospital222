@@ -75,7 +75,7 @@ function App() {
 
             {/* Tombol Kontak */}
             <div style={styles.contactBox}>
-              <a href="tel:+6281998090154" style={styles.contactBtn}>
+              <a href="tel:+622286023000" style={styles.contactBtn}>
                 📞 Telepon
               </a>
 
@@ -89,22 +89,21 @@ function App() {
                 rel="noopener noreferrer"
                 style={styles.waBtn}
               >
-                💬 WhatsApp
+                💬 Chat WhatsApp
               </a>
             </div>
 
-            {}
-            <div style={{ marginTop: "25px" }}>
+            {/* Google Maps */}
+            <div style={styles.mapContainer}>
               <iframe
-                title="maps"
+                title="Lokasi Edelweiss Hospital"
                 src="https://www.google.com/maps?q=Edelweiss+Hospital+Bandung&output=embed"
                 style={styles.map}
-                allowFullScreen=""
                 loading="lazy"
               ></iframe>
             </div>
 
-            {}
+            {/* Form Kontak */}
             <div style={{ marginTop: "25px" }}>
               <h3>Kirim Pesan</h3>
               <form onSubmit={handleSubmit} style={styles.form}>
@@ -219,20 +218,27 @@ const styles = {
     padding: "12px",
     background: "#2563eb",
     color: "white",
-    borderRadius: "8px"
+    borderRadius: "8px",
+    fontWeight: "bold"
   },
   waBtn: {
     textDecoration: "none",
     padding: "12px",
     background: "#25D366",
     color: "white",
-    borderRadius: "8px"
+    borderRadius: "8px",
+    fontWeight: "bold"
+  },
+  mapContainer: {
+    marginTop: "25px",
+    borderRadius: "12px",
+    overflow: "hidden",
+    boxShadow: "0 4px 10px rgba(0,0,0,0.1)"
   },
   map: {
     width: "100%",
     height: "250px",
-    border: "0",
-    borderRadius: "10px"
+    border: "0"
   },
   form: {
     display: "flex",
@@ -256,7 +262,8 @@ const styles = {
     color: "white",
     border: "none",
     borderRadius: "8px",
-    cursor: "pointer"
+    cursor: "pointer",
+    fontWeight: "bold"
   },
   footer: {
     background: "#2563eb",
