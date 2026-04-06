@@ -32,13 +32,24 @@ function App() {
       </header>
 
       <nav style={styles.nav}>
-        <button onClick={() => setMenu("home")} style={menu === "home" ? styles.activeBtn : styles.btn}>
+        <button
+          onClick={() => setMenu("home")}
+          style={menu === "home" ? styles.activeBtn : styles.btn}
+        >
           Home
         </button>
-        <button onClick={() => setMenu("layanan")} style={menu === "layanan" ? styles.activeBtn : styles.btn}>
+
+        <button
+          onClick={() => setMenu("layanan")}
+          style={menu === "layanan" ? styles.activeBtn : styles.btn}
+        >
           Layanan
         </button>
-        <button onClick={() => setMenu("kontak")} style={menu === "kontak" ? styles.activeBtn : styles.btn}>
+
+        <button
+          onClick={() => setMenu("kontak")}
+          style={menu === "kontak" ? styles.activeBtn : styles.btn}
+        >
           Kontak
         </button>
       </nav>
@@ -71,10 +82,14 @@ function App() {
           <div style={styles.card}>
             <h2>Hubungi Kami</h2>
 
+            <p style={{ fontSize: "14px", color: "#555" }}>
+              Silakan hubungi kami melalui kontak di bawah atau kirim pesan langsung.
+            </p>
+
             <p>📍 Jl. Soekarno Hatta No. 550, Bandung</p>
 
-            {/* Tombol Kontak */}
-            <div style={styles.contactBox}>
+            {/* tombol kontak */}
+            <div style={styles.contactGrid}>
               <a href="tel:+622286023000" style={styles.contactBtn}>
                 📞 Telepon
               </a>
@@ -89,23 +104,24 @@ function App() {
                 rel="noopener noreferrer"
                 style={styles.waBtn}
               >
-                💬 Chat WhatsApp
+                💬 WhatsApp
               </a>
             </div>
 
-            {/* Google Maps */}
+            {/* map */}
             <div style={styles.mapContainer}>
               <iframe
-                title="Lokasi Edelweiss Hospital"
+                title="Lokasi Edelweis Hospital"
                 src="https://www.google.com/maps?q=Edelweiss+Hospital+Bandung&output=embed"
                 style={styles.map}
                 loading="lazy"
               ></iframe>
             </div>
 
-            {/* Form Kontak */}
+            {/* form */}
             <div style={{ marginTop: "25px" }}>
               <h3>Kirim Pesan</h3>
+
               <form onSubmit={handleSubmit} style={styles.form}>
                 <input
                   type="text"
@@ -207,9 +223,9 @@ const styles = {
   list: {
     textAlign: "left"
   },
-  contactBox: {
-    display: "flex",
-    flexDirection: "column",
+  contactGrid: {
+    display: "grid",
+    gridTemplateColumns: "1fr 1fr",
     gap: "10px",
     marginTop: "15px"
   },
@@ -219,7 +235,8 @@ const styles = {
     background: "#2563eb",
     color: "white",
     borderRadius: "8px",
-    fontWeight: "bold"
+    fontWeight: "bold",
+    textAlign: "center"
   },
   waBtn: {
     textDecoration: "none",
@@ -227,7 +244,8 @@ const styles = {
     background: "#25D366",
     color: "white",
     borderRadius: "8px",
-    fontWeight: "bold"
+    fontWeight: "bold",
+    textAlign: "center"
   },
   mapContainer: {
     marginTop: "25px",
