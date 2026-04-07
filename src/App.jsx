@@ -74,10 +74,9 @@ function App() {
         {/* LAYANAN */}
         {menu === "layanan" && (
           <div style={styles.card}>
-            <h2 style={styles.title}>Layanan Kami</h2>
-
+<h2 style={{ color: "blue" }}>Layanan Kami</h2>
             <div style={styles.section}>
-              <h3>Pusat Unggulan</h3>
+              <h3 style={{ color: "#1e3a8a" }}>Pusat Unggulan</h3>           
               <ul style={styles.list}>
                 <li>Brain Center & Neurosurgery</li>
                 <li>Mother & Children Center</li>
@@ -89,7 +88,7 @@ function App() {
             </div>
 
             <div style={styles.section}>
-              <h3>Layanan Umum</h3>
+              <h3 style={{ color: "#1e3a8a" }}>Layanan Umum</h3>           
               <ul style={styles.list}>
                 <li>IGD 24 Jam</li>
                 <li>Poli Rawat Jalan</li>
@@ -99,7 +98,7 @@ function App() {
             </div>
 
             <div style={styles.section}>
-              <h3>Paket Layanan</h3>
+              <h3 style={{ color: "#1e3a8a" }}>Paket Layanan</h3>           
               <ul style={styles.list}>
                 <li>Medical Check Up</li>
                 <li>Paket Persalinan</li>
