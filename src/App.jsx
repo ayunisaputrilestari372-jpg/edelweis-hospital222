@@ -4,6 +4,36 @@ import gedung from "./assets/gedung.webp";
 function App() {
   const [menu, setMenu] = useState("home");
 
+  // ✅ TAMBAHAN (STATE)
+  const [nama, setNama] = useState("");
+  const [pesan, setPesan] = useState("");
+
+  // ✅ TAMBAHAN (FUNCTION KIRIM)
+  const handleSubmit = async () => {
+    if (!nama || !pesan) {
+      alert("Isi dulu semua field!");
+      return;
+    }
+
+    const data = {
+      nama: nama,
+      pesan: pesan,
+    };
+
+    try {
+      await fetch("https://script.google.com/macros/s/AKfycbzeIA2XfDOQ_VoiTzA0CP2Pfsi2TAsBEBdYill2CijZwoMu8qbgcesIVgeAEWrD4B0u/exec", {
+        method: "POST",
+        body: JSON.stringify(data),
+      });
+
+      alert("Saran berhasil dikirim!");
+      setNama("");
+      setPesan("");
+    } catch (error) {
+      alert("Gagal mengirim!");
+    }
+  };
+
   return (
     <div style={styles.container}> 
       <header style={styles.header}>
@@ -133,22 +163,22 @@ function App() {
               <p>🕘 Poli: 08.00 - 20.00 WIB</p>
             </div>
 
-            {/* ✅ MAP SUDAH DIPERBAIKI */}
+            {/* MAP */}
             <div style={{ textAlign: "center", marginTop: "10px" }}>
-  <a
-    href="https://www.google.com/maps/search/?api=1&query=Jl.+Soekarno-Hatta+No.550+Bandung"
-    target="_blank"
-    rel="noopener noreferrer"
-    style={{
-      textDecoration: "none",
-      color: "red",
-      fontSize: "20px",
-      fontWeight: "bold",
-    }}
-  >
-    📍 Lihat Lokasi Edelweis Hospital
-  </a>
-</div>
+              <a
+                href="https://www.google.com/maps/search/?api=1&query=Jl.+Soekarno-Hatta+No.550+Bandung"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  textDecoration: "none",
+                  color: "red",
+                  fontSize: "20px",
+                  fontWeight: "bold",
+                }}
+              >
+                📍 Lihat Lokasi Edelweis Hospital
+              </a>
+            </div>
 
             {/* FORM */}
             <div style={styles.section}>
@@ -157,16 +187,22 @@ function App() {
               <input
                 type="text"
                 placeholder="Nama Anda"
+                value={nama}
+                onChange={(e) => setNama(e.target.value)}
                 style={styles.input}
               />
 
               <textarea
                 placeholder="Tulis pesan atau saran..."
                 rows="4"
+                value={pesan}
+                onChange={(e) => setPesan(e.target.value)}
                 style={styles.textarea}
               />
 
-              <button style={styles.sendBtn}>Kirim</button>
+              <button onClick={handleSubmit} style={styles.sendBtn}>
+                Kirim
+              </button>
             </div>
           </div>
         )}
@@ -176,119 +212,3 @@ function App() {
     </div>
   );
 }
-
-const styles = {
-  container: {
-    fontFamily: "Arial",
-    background: "#f4f6f9",
-    minHeight: "100vh",
-    display: "flex",
-    flexDirection: "column",
-  },
-  header: {
-    background: "#2563eb",
-    color: "white",
-    padding: "20px",
-    textAlign: "center",
-  },
-  nav: {
-    display: "flex",
-    justifyContent: "center",
-    background: "#1d4ed8",
-  },
-  btn: {
-    padding: "12px 20px",
-    border: "none",
-    background: "transparent",
-    color: "white",
-    cursor: "pointer",
-  },
-  activeBtn: {
-    padding: "12px 20px",
-    border: "none",
-    background: "#1e40af",
-    color: "white",
-    cursor: "pointer",
-  },
-  content: {
-    padding: "30px",
-    flex: 1,
-  },
-  card: {
-    background: "#e0f2fe",
-    padding: "20px",
-    borderRadius: "12px",
-    boxShadow: "0 4px 10px rgba(0,0,0,0.1)",
-    maxWidth: "700px",
-    margin: "0 auto",
-    textAlign: "center",
-  },
-  image: {
-    width: "100%",
-    height: "320px",
-    objectFit: "contain",
-    borderRadius: "12px",
-    marginBottom: "20px",
-  },
-  list: {
-    textAlign: "left",
-    paddingLeft: "20px",
-  },
-  footer: {
-    background: "#2563eb",
-    color: "white",
-    textAlign: "center",
-    padding: "15px",
-  },
-  grid2: {
-    display: "grid",
-    gridTemplateColumns: "1fr 1fr",
-    gap: "20px",
-  },
-  box: {
-    borderLeft: "3px solid #0ea5e9",
-    paddingLeft: "15px",
-  },
-  title: {
-    marginBottom: "10px",
-  },
-  section: {
-    textAlign: "left",
-    marginTop: "15px",
-  },
-  waBtn: {
-    display: "inline-block",
-    background: "#25D366",
-    color: "white",
-    padding: "10px 15px",
-    borderRadius: "8px",
-    textDecoration: "none",
-    fontWeight: "bold",
-    marginTop: "10px",
-  },
-  input: {
-    width: "100%",
-    padding: "10px",
-    marginTop: "10px",
-    borderRadius: "8px",
-    border: "1px solid #ccc",
-  },
-  textarea: {
-    width: "100%",
-    padding: "10px",
-    marginTop: "10px",
-    borderRadius: "8px",
-    border: "1px solid #ccc",
-  },
-  sendBtn: {
-    marginTop: "10px",
-    padding: "10px 15px",
-    background: "#2563eb",
-    color: "white",
-    border: "none",
-    borderRadius: "8px",
-    cursor: "pointer",
-  },
-};
-
-export default App;
