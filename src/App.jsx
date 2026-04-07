@@ -35,41 +35,41 @@ function App() {
       </nav>
 
       <div style={styles.content}>
-        {/* HOME */}
-  {menu === "home" && (
-      <div style={styles.card}>
-        <img src={gedung} alt="Rumah Sakit" style={styles.image} />
+      {/* HOME */}
+      {menu === "home" && (
+          <div style={styles.card}>
+            <img src={gedung} alt="Rumah Sakit" style={styles.image} />
 
-        <div style={{ textAlign: "center", marginBottom: "20px" }}>
-          <h2>Selamat Datang di Edelweis Hospital 👋</h2>
-          <p>
-            Edelweis Hospital hadir sebagai rumah sakit modern yang berkomitmen memberikan pelayanan kesehatan terbaik kepada masyarakat.
-            Dengan didukung oleh tenaga medis profesional, fasilitas lengkap, serta teknologi terkini, Edelweis Hospital menjadi mitra terpercaya dalam menjaga dan meningkatkan kualitas kesehatan pasien.
-            Kami mengutamakan pelayanan yang cepat, tepat, serta penuh kepedulian demi kenyamanan dan keselamatan setiap pasien.
-          </p>
-          
-        </div>
+            <div style={{ textAlign: "center", marginBottom: "20px" }}>
+              <h2>Selamat Datang di Edelweis Hospital 👋</h2>
+              <p>
+                Edelweis Hospital hadir sebagai rumah sakit modern yang berkomitmen memberikan pelayanan kesehatan terbaik kepada masyarakat.
+                Dengan didukung oleh tenaga medis profesional, fasilitas lengkap, serta teknologi terkini, Edelweis Hospital menjadi mitra terpercaya dalam menjaga dan meningkatkan kualitas kesehatan pasien.
+                Kami mengutamakan pelayanan yang cepat, tepat, serta penuh kepedulian demi kenyamanan dan keselamatan setiap pasien.
+              </p>
+              
+            </div>
 
-        <div style={styles.grid2}>
-          <div style={styles.box}>
-            <h3>Misi</h3>
-            <ul style={styles.list}>
-              <li>Memberikan pengalaman terbaik dalam pelayanan dan keselamatan pasienn, dengah penuh kasih sayang serta terpercaya sesuai dengan kebutuhan setiap pasien</li>
-              <li>Mempersiapkan insan perumahsakitan yang unggul, profesional dan berorientasi pada pelayanan terbaik  kepada pasien</li>
-              <li>Memberikan layanan kesehatan terbaik untuk masyarakat berbasis riset, data, dan fakta</li>
-            </ul>
+            <div style={styles.grid2}>
+              <div style={styles.box}>
+                <h3>Misi</h3>
+                <ul style={styles.list}>
+                  <li>Memberikan pengalaman terbaik dalam pelayanan dan keselamatan pasienn, dengah penuh kasih sayang serta terpercaya sesuai dengan kebutuhan setiap pasien</li>
+                  <li>Mempersiapkan insan perumahsakitan yang unggul, profesional dan berorientasi pada pelayanan terbaik  kepada pasien</li>
+                  <li>Memberikan layanan kesehatan terbaik untuk masyarakat berbasis riset, data, dan fakta</li>
+                </ul>
+              </div>
+
+              <div style={styles.box}>
+                <h3>Visi</h3>
+                <p>
+                  Menjadi pilihan utama sebagai penyedia layanan kesehatan terintegrasi,
+                  yang berfokus pada pelayanan berkualitas.
+                </p>
+              </div>
+            </div>
           </div>
-
-          <div style={styles.box}>
-            <h3>Visi</h3>
-            <p>
-              Menjadi pilihan utama sebagai penyedia layanan kesehatan terintegrasi,
-              yang berfokus pada pelayanan berkualitas.
-            </p>
-          </div>
-        </div>
-      </div>
-    )}
+        )}
         {/* LAYANAN */}
         {menu === "layanan" && (
           <div style={styles.card}>
