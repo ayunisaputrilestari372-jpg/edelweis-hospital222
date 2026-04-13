@@ -7,18 +7,8 @@ export default function Layanan() {
   const API_URL =
     "https://api.mediastack.com/v1/news?access_key=f58cafad7b5a480269c205658e34f021&languages=en&categories=health&limit=5";
 
-  // 🔥 GAMBAR DEFAULT (kalau error)
   const DEFAULT_IMAGE =
     "https://images.unsplash.com/photo-1580281657527-47c9f39b0c89";
-
-  // 🔥 GAMBAR FIX (STABIL & KONSISTEN)
-  const FIXED_IMAGES = [
-    "https://images.unsplash.com/photo-1588776814546-ec7e7e2f4d9b",
-    "https://images.unsplash.com/photo-1576091160550-2173dba999ef",
-    "https://images.unsplash.com/photo-1580281657527-47c9f39b0c89",
-    "https://images.unsplash.com/photo-1584515933487-779824d29309",
-    "https://images.unsplash.com/photo-1581595219315-a187dd40c322"
-  ];
 
   useEffect(() => {
     const getNews = async () => {
@@ -27,21 +17,17 @@ export default function Layanan() {
         const data = await res.json();
 
         if (data.data && data.data.length > 0) {
-          // 🔥 FIX: gabungkan berita + gambar tetap
-          const fixedData = data.data.map((item, index) => ({
+          const fixedData = data.data.map((item) => ({
             ...item,
-            imageFinal: FIXED_IMAGES[index % FIXED_IMAGES.length],
+            imageFinal: item.image || DEFAULT_IMAGE,
           }));
 
           setNews(fixedData);
-
-          // 🔥 simpan cache
           localStorage.setItem("news_cache", JSON.stringify(fixedData));
         } else {
           throw new Error("Data kosong");
         }
       } catch (error) {
-        // 🔥 ambil dari cache kalau API gagal
         const cache = localStorage.getItem("news_cache");
 
         if (cache) {
@@ -99,9 +85,8 @@ export default function Layanan() {
                 style={styles.newsCard}
                 onClick={() => window.open(item.url, "_blank")}
               >
-                {/* 🔥 GAMBAR FIX (TIDAK AKAN HILANG) */}
                 <img
-                  src={item.imageFinal}
+                  src={item.imageFinal || DEFAULT_IMAGE}
                   alt="news"
                   style={styles.image}
                   onError={(e) => {
@@ -151,25 +136,34 @@ const styles = {
     color: "#1e3a8a",
     marginTop: "20px",
   },
+
+  // 🔥 DIUBAH KE BAWAH
   grid: {
     display: "flex",
-    flexWrap: "wrap",
-    gap: "15px",
+    flexDirection: "column",
+    gap: "20px",
     marginTop: "15px",
-    justifyContent: "center",
   },
+
+  // 🔥 DIUBAH JADI PERSEGI PANJANG
   newsCard: {
-    width: "250px",
+    display: "flex",
+    width: "100%",
+    height: "150px",
     backgroundColor: "#fff",
     borderRadius: "12px",
     overflow: "hidden",
     cursor: "pointer",
+    boxShadow: "0 4px 8px rgba(0,0,0,0.1)",
   },
+
+  // 🔥 GAMBAR DI KIRI
   image: {
-    width: "100%",
-    height: "160px",
+    width: "250px",
+    height: "100%",
     objectFit: "cover",
   },
+
   newsContent: {
     padding: "10px",
   },
