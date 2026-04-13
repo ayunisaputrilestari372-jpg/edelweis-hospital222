@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
 
+// 🔥 IMPORT LOGO DARI ASSETS
+import logo from "../assets/logo.png";
+
 export default function Layanan() {
   const [news, setNews] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -7,8 +10,8 @@ export default function Layanan() {
   const API_URL =
     "https://api.mediastack.com/v1/news?access_key=f58cafad7b5a480269c205658e34f021&languages=en&categories=health&limit=5";
 
-  const DEFAULT_IMAGE =
-    "https://images.unsplash.com/photo-1580281657527-47c9f39b0c89";
+  // 🔥 GANTI DEFAULT JADI LOGO
+  const DEFAULT_IMAGE = logo;
 
   useEffect(() => {
     const getNews = async () => {
@@ -19,7 +22,9 @@ export default function Layanan() {
         if (data.data && data.data.length > 0) {
           const fixedData = data.data.map((item) => ({
             ...item,
-            imageFinal: item.image || DEFAULT_IMAGE,
+
+            // 🔥 CEK GAMBAR API
+            imageFinal: item.image ? item.image : DEFAULT_IMAGE,
           }));
 
           setNews(fixedData);
@@ -86,7 +91,7 @@ export default function Layanan() {
                 onClick={() => window.open(item.url, "_blank")}
               >
                 <img
-                  src={item.imageFinal || DEFAULT_IMAGE}
+                  src={item.imageFinal}
                   alt="news"
                   style={styles.image}
                   onError={(e) => {
@@ -137,7 +142,6 @@ const styles = {
     marginTop: "20px",
   },
 
-  // 🔥 DIUBAH KE BAWAH
   grid: {
     display: "flex",
     flexDirection: "column",
@@ -145,7 +149,6 @@ const styles = {
     marginTop: "15px",
   },
 
-  // 🔥 DIUBAH JADI PERSEGI PANJANG
   newsCard: {
     display: "flex",
     width: "100%",
@@ -157,11 +160,12 @@ const styles = {
     boxShadow: "0 4px 8px rgba(0,0,0,0.1)",
   },
 
-  // 🔥 GAMBAR DI KIRI
+  // 🔥 BIAR LOGO TIDAK KE POTONG
   image: {
     width: "250px",
     height: "100%",
-    objectFit: "cover",
+    objectFit: "contain",
+    backgroundColor: "#fff",
   },
 
   newsContent: {
