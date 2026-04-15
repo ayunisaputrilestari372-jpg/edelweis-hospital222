@@ -1,11 +1,11 @@
 import { useState } from "react";
 
 function App() {
-  // FORM
+ 
   const [nama, setNama] = useState("");
   const [pesan, setPesan] = useState("");
 
-  // SUBMIT
+ 
   const handleSubmit = async () => {
     if (!nama || !pesan) {
       alert("Isi dulu nama dan pesan!");
@@ -38,7 +38,7 @@ function App() {
           <p>✉️ <b>Email:</b> info@edelweishospital.com</p>
         </div>
 
-        {/* WHATSAPP */}
+        {}
         <a
           href="https://wa.me/6281234567890"
           target="_blank"
@@ -54,7 +54,7 @@ function App() {
           <p>🕘 Poli Umum: 08.00 - 20.00 WIB</p>
         </div>
 
-        {/* MAP */}
+        {}
         <div style={{ textAlign: "center" }}>
           <a
             href="https://www.google.com/maps/search/?api=1&query=Edelweis+Hospital+Bandung"
@@ -65,7 +65,7 @@ function App() {
           </a>
         </div>
 
-        {/* FORM */}
+        {}
         <div style={styles.section}>
           <h3>Kirim Saran & Kritik</h3>
 
@@ -93,7 +93,7 @@ function App() {
   );
 }
 
-// STYLE
+
 const styles = {
   container: {
     fontFamily: "Arial",
