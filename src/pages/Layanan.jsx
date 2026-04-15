@@ -9,6 +9,9 @@ import kamar4 from "../assets/kamar4.jpg";
 import kamar5 from "../assets/kamar5.jpg";
 import kamar6 from "../assets/kamar6.jpg";
 
+// 🔥 IMPORT LOGO DARI ASSETS
+import logo from "../assets/logo.png";
+
 export default function Layanan() {
   const [news, setNews] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -17,6 +20,7 @@ export default function Layanan() {
   const API_URL =
     "https://api.mediastack.com/v1/news?access_key=f58cafad7b5a480269c205658e34f021&languages=en&categories=health&limit=5";
 
+<<<<<<< HEAD
   const DEFAULT_IMAGE = logo;
 
   const kamarList = [
@@ -27,6 +31,10 @@ export default function Layanan() {
     { name: "SAKURA", price: "Rp 650.000", img: kamar5, desc: "Kelas 3 standar" },
     { name: "JASMINE", price: "Rp 450.000", img: kamar6, desc: "Nyaman & bersih" },
   ];
+=======
+  // 🔥 GANTI DEFAULT JADI LOGO
+  const DEFAULT_IMAGE = logo;
+>>>>>>> a6bc7a8cde1e37a386bb005b2d151b1fa489f662
 
   useEffect(() => {
     const getNews = async () => {
@@ -37,6 +45,11 @@ export default function Layanan() {
         if (data.data && data.data.length > 0) {
           const fixedData = data.data.map((item) => ({
             ...item,
+<<<<<<< HEAD
+=======
+
+            // 🔥 CEK GAMBAR API
+>>>>>>> a6bc7a8cde1e37a386bb005b2d151b1fa489f662
             imageFinal: item.image ? item.image : DEFAULT_IMAGE,
           }));
 
@@ -160,7 +173,20 @@ export default function Layanan() {
                 style={styles.newsCard}
                 onClick={() => window.open(item.url, "_blank")}
               >
+<<<<<<< HEAD
                 <img src={item.imageFinal} style={styles.image} />
+=======
+                <img
+                  src={item.imageFinal}
+                  alt="news"
+                  style={styles.image}
+                  onError={(e) => {
+                    e.currentTarget.onerror = null;
+                    e.currentTarget.src = DEFAULT_IMAGE;
+                  }}
+                />
+
+>>>>>>> a6bc7a8cde1e37a386bb005b2d151b1fa489f662
                 <div style={styles.newsContent}>
                   <h4 style={styles.newsTitle}>{item.title}</h4>
                   <p style={styles.newsDesc}>
@@ -213,6 +239,7 @@ const styles = {
     marginTop: "20px",
   },
 
+<<<<<<< HEAD
   // 🔥 GRID FIX 3 KOLOM
   roomGrid: {
     display: "grid",
@@ -291,12 +318,18 @@ const styles = {
     borderRadius: "10px",
   },
 
+=======
+>>>>>>> a6bc7a8cde1e37a386bb005b2d151b1fa489f662
   grid: {
     display: "flex",
     flexDirection: "column",
     gap: "20px",
     marginTop: "15px",
   },
+<<<<<<< HEAD
+=======
+
+>>>>>>> a6bc7a8cde1e37a386bb005b2d151b1fa489f662
   newsCard: {
     display: "flex",
     height: "150px",
@@ -305,9 +338,19 @@ const styles = {
     overflow: "hidden",
     cursor: "pointer",
   },
+<<<<<<< HEAD
   image: {
     width: "250px",
     objectFit: "contain",
+=======
+
+  // 🔥 BIAR LOGO TIDAK KE POTONG
+  image: {
+    width: "250px",
+    height: "100%",
+    objectFit: "contain",
+    backgroundColor: "#fff",
+>>>>>>> a6bc7a8cde1e37a386bb005b2d151b1fa489f662
   },
   newsContent: {
     padding: "10px",
