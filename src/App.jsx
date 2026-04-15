@@ -2,6 +2,7 @@ import { useState } from "react";
 import Home from "./pages/Home.jsx";
 import Layanan from "./pages/Layanan.jsx";
 import Contact from "./pages/Contact.jsx";
+import Tentang from "./pages/Tentang.jsx";
 import Navbar from "./components/Navbar.jsx";
 import Footer from "./components/Footer.jsx";
 
@@ -22,6 +23,7 @@ function App() {
         {menu === "home" && <Home />}
         {menu === "layanan" && <Layanan />}
         {menu === "contact" && <Contact />}
+        {menu === "tentang" && <Tentang />}
       </div>
 
       <Footer />
